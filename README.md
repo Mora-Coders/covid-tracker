@@ -6,6 +6,6 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 ### What's included:
 
 - Advanced Filtering
-- Higlevel Security
+- Highlevel Security
 - Scalable Architecture
 
