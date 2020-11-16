@@ -8,4 +8,5 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 - Advanced Filtering
 - Highlevel Security
 - Scalable Architecture
+- Reliable Data
 
