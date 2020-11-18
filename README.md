@@ -12,5 +12,4 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 
 ### Architecture:
 
-![Image of the Architecture]
-(architecture/Architecture.jpg)
+![Image of the Architecture](architecture/Architecture.jpg)
