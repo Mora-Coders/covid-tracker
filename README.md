@@ -13,4 +13,4 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 ### Architecture:
 
 ![Image of the Architecture]
-(architecture/COVID Temperature Tracker - Architecture.svg)
+(architecture/Architecture.svg)
