@@ -10,3 +10,6 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 - Scalable Architecture
 - Reliable Data
 
+### Architecture:
+
+![Image of the Architecture](architecture/Architecture.jpg)
