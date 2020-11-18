@@ -13,4 +13,4 @@ An IoT application that helps anlalyse human temperature hence identify the pote
 ### Architecture:
 
 ![Image of the Architecture]
-(architecture/Architecture.svg)
+(architecture/Architecture.jpg)
