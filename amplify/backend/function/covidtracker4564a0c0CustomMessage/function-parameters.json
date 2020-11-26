@@ -1,0 +1,21 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link",
+    "custom"
+  ],
+  "parentResource": "covidtracker4564a0c0",
+  "functionName": "covidtracker4564a0c0CustomMessage",
+  "resourceName": "covidtracker4564a0c0CustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": "[\n  {\n    \"key\": \"RESOURCENAME\",\n    \"value\": \"resourceName\"\n  }\n]",
+  "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "roleName": "covidtracker4564a0c0CustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "http://develop.d35y560vkvgxo6.amplifyapp.com",
+  "EMAILSUBJECT": "Activate Your Account",
+  "EMAILMESSAGE": "Please follow the steps",
+  "RESOURCENAME": "resourceName",
+  "triggerEventPath": "CustomMessage.event.json"
+}

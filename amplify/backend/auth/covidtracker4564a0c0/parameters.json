@@ -1,0 +1,70 @@
+{
+    "identityPoolName": "covidtracker4564a0c0_identitypool_4564a0c0",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "covidt4564a0c0",
+    "userPoolName": "covidtracker4564a0c0_userpool_4564a0c0",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "email",
+        "name",
+        "phone_number"
+    ],
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "userpoolClientLambdaRole": "covidt4564a0c0_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "4564a0c0",
+    "resourceName": "covidtracker4564a0c0",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "default",
+    "usernameAttributes": [
+        "email"
+    ],
+    "triggers": "{\"CustomMessage\":[\"verification-link\"]}",
+    "userPoolGroupList": [],
+    "verificationBucketName": "covidtracker4564a0c0verificationbucket",
+    "parentStack": {
+        "Ref": "AWS::StackId"
+    },
+    "permissions": [],
+    "dependsOn": [{
+        "category": "function",
+        "resourceName": "covidtracker4564a0c0CustomMessage",
+        "triggerProvider": "Cognito",
+        "attributes": [
+            "Arn",
+            "Name"
+        ]
+    }]
+}

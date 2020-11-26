@@ -36,6 +36,18 @@
       "StackName": "amplify-covidtracker-test-14801",
       "StackId": "arn:aws:cloudformation:us-east-1:428946053057:stack/amplify-covidtracker-test-14801/d7a47dd0-2848-11eb-8d4f-0e6bd0a701a5",
       "AmplifyAppId": "d35y560vkvgxo6"
+    },
+    "categories": {
+      "function": {
+        "covidtracker4564a0c0CustomMessage": {
+          "REDIRECTURL": "http://develop.d35y560vkvgxo6.amplifyapp.com",
+          "EMAILSUBJECT": "Activate Your Account",
+          "EMAILMESSAGE": "Please follow the steps"
+        }
+      },
+      "auth": {
+        "covidtracker4564a0c0": {}
+      }
     }
   }
 }
