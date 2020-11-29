@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NbAuthComponent } from '@nebular/auth';
 import { LoginComponent } from './login/login.component';
+import { ProfileSetupComponent } from './profile-setup/profile-setup.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'profile-setup',
+        component: ProfileSetupComponent,
       },
     ],
   },
