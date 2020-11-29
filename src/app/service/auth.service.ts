@@ -33,11 +33,14 @@ export class AuthService {
 
   private readonly _profileSetupFailed = new BehaviorSubject<boolean>(false);
 
-  /** SignIn status as an Observable */
+  /** SignIn Failure status as an Observable */
   readonly signFailed$ = this._signFailed.asObservable();
 
   /** Profile Setup failed status as an Observable */
   readonly profileSetupFailed$ = this._profileSetupFailed.asObservable();
+
+  /** SignIn status as an Observable */
+  readonly signedIn$ = this._signedIn.asObservable();
 
   constructor(private router: Router) {
 
