@@ -1,0 +1,14 @@
+{
+    "authcovidtracker4564a0c0UserPoolId": {
+        "Fn::GetAtt": [
+            "customerAppCognito",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "functioncovidtracker4564a0c0CustomMessageLambdaExecutionRole": {
+        "Fn::GetAtt": [
+            "customerAppCognitoPostConfirmation",
+            "Outputs.LambdaExecutionRole"
+        ]
+    }
+}
