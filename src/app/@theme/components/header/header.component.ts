@@ -3,8 +3,10 @@ import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeServ
 
 import { UserData } from '../../../@core/data/users';
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
+import { map, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { AuthService } from 'app/service/auth.service';
+import { Auth, Hub } from 'aws-amplify';
 
 @Component({
   selector: 'ngx-header',
@@ -45,15 +47,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
               private themeService: NbThemeService,
               private userService: UserData,
               private layoutService: LayoutService,
-              private breakpointService: NbMediaBreakpointsService) {
+              private breakpointService: NbMediaBreakpointsService,
+              private _auth: AuthService) {
+
+                this._auth.getAuthenticatedUser().subscribe(res =>{
+                  this.user = res.attributes;
+                });
+
+                menuService.onItemClick().subscribe((data) => {
+                  // .... do what you want
+                  console.log(data);
+                  if(data.item.title == "Log out"){
+                    this._auth.signOut();
+                  }
+                });
+
   }
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
-
-    this.userService.getUsers()
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((users: any) => this.user = users.nick);
 
     const { xl } = this.breakpointService.getBreakpointsMap();
     this.themeService.onMediaQueryChange()
@@ -90,5 +102,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   navigateHome() {
     this.menuService.navigateHome();
     return false;
+  }
+
+  onMenuClick($even){
+    console.log($even);
   }
 }

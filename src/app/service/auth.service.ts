@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth, Hub } from 'aws-amplify';
-import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { catchError, map } from 'rxjs/operators';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -42,6 +43,9 @@ export class AuthService {
   /** SignIn status as an Observable */
   readonly signedIn$ = this._signedIn.asObservable();
 
+  /** SignIn user details as an Observable */
+  readonly authDetails$ = this._authState.asObservable();
+
   constructor(private router: Router) {
 
     let profileSetupFailed: boolean = false;
@@ -52,7 +56,8 @@ export class AuthService {
 
    } 
   
-   async setupProfile(username: string, password: string, name: string, newPassword: string, mobile: string) {
+  /** Setup profile in the first login */
+  async setupProfile(username: string, password: string, name: string, newPassword: string, mobile: string) {
     Auth.signIn(username, password)
       .then(user => {
           if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
@@ -84,6 +89,7 @@ export class AuthService {
       });
   }
 
+  /** Sign in function */
   async signIn(username: string, password: string) {
     Auth.signIn(username, password)
       .then(user => {
@@ -102,14 +108,45 @@ export class AuthService {
       });
   } 
 
+  /** Get authenticat state */
+  public isAuthenticated(): Observable<boolean> {
+    return fromPromise(Auth.currentAuthenticatedUser())
+      .pipe(
+        map(result => {
+          this._signedIn.next(true);
+          return true;
+        }),
+        catchError(error => {
+          this._signedIn.next(false);
+          return of(false);
+        })
+      );
+  }
+
+  /** Get authenticate user */
+  public getAuthenticatedUser(): Observable<any>{
+    return fromPromise(Auth.currentAuthenticatedUser())
+      .pipe(
+        map(result => {
+          return result
+        }),
+        catchError(error => {
+          throw new Error(error);
+        })
+      );
+  }
+
+  /** Sign out user */
   async  signOut() {
     try {
         await Auth.signOut();
+        this.router.navigate(['auth/login']);
     } catch (error) {
         console.log('error signing out: ', error);
     }
   }
 
+  /** Sets up the logged in user */
   private setUser(user: any) {
     if (!user) {
       return;
@@ -118,7 +155,7 @@ export class AuthService {
     console.log(user);
 
     const {
-      attributes: name, email,
+      attributes: {name, email},
       username
     } = user;
 
