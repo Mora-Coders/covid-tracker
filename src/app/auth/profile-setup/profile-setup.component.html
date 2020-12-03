@@ -74,11 +74,14 @@
 
     <div class="form-control-group">
         <label class="label" for="input-re-password">New password:</label>
-        <input nbInput [(ngModel)]="user.newPassword" #rePass="ngModel" type="password" id="input-re-password" name="rePass" placeholder="New Password" fullWidth fieldSize="large" [status]="rePass.dirty ? (rePass.invalid || password.value != rePass.value  ? 'danger' : 'success') : 'basic'"
-            [required]="getConfigValue('forms.validation.password.required')" [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null">
+        <input nbInput [(ngModel)]="user.newPassword" #rePass="ngModel" type="password" id="input-re-password" name="rePass" placeholder="New Password" fullWidth fieldSize="large" [status]="rePass.dirty ? (rePass.invalid ? 'danger' : 'success') : 'basic'" [required]="getConfigValue('forms.validation.password.required')"
+            [attr.aria-invalid]="rePass.invalid && rePass.touched ? true : null">
         <ng-container *ngIf="rePass.invalid && rePass.touched">
             <p class="caption status-danger" *ngIf="rePass.errors?.required">
                 A new Password is required!
+            </p>
+            <p class="caption status-danger" *ngIf="rePass.errors?.minlength || rePass.errors?.maxlength">
+                Password should contain from {{ getConfigValue('forms.validation.password.minLength') }} to {{ getConfigValue('forms.validation.password.maxLength') }} characters
             </p>
         </ng-container>
     </div>
