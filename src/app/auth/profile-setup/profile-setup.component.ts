@@ -25,6 +25,7 @@ export class ProfileSetupComponent extends NbRegisterComponent {
         this.errors.push("Update Failed");
       }
     });
+    
 
   }
 

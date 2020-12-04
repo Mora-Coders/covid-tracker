@@ -24,7 +24,7 @@ export class LoginComponent extends NbLoginComponent {
     this.submitted = true;
     console.log(this.user.email);
     //this._auth.signIn(this.user.email, this.user.password);
-    this._auth.tempSignIn(this.user.email, this.user.password)
+    this._auth.signIn(this.user.email, this.user.password)
       .subscribe(this.observer);
   }
 

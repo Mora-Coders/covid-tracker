@@ -101,25 +101,7 @@ export class AuthService {
   }
 
   /** Sign in function */
-  async signIn(username: string, password: string) {
-    Auth.signIn(username, password)
-      .then(user => {
-          if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-            this.router.navigate(['auth/profile-setup']);
-          } else {
-            this._profileSetupFailed.next(false);
-            this.setUser(user);
-            this._signedIn.next(true);
-            this._signFailed.next(false);
-            this.router.navigate(['main/dashboard']);
-          }
-      }).catch(e => {
-        console.log('error signing in', e);
-        this._signFailed.next(true);
-      });
-  } 
-
-  tempSignIn(username: string, password: string): Observable<any>{
+  signIn(username: string, password: string): Observable<any>{
     return from(Auth.signIn(username, password))
       .pipe(map(response => response));
   }
