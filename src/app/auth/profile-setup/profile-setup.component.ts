@@ -14,17 +14,18 @@ export class ProfileSetupComponent extends NbRegisterComponent {
     super(service, options, cd, router);
 
     console.log(this.submitted);
+    this._auth.updateProfileSetupStatus(false);
 
     this._auth.profileSetupFailed$.subscribe(state => {
       this.showMessages.error = state;
+      console.log(state);
+      this.submitted = false;
       if(state){
-        this.submitted = false;
-        this.showMessages.success = false;
-        this.showMessages.error = true;
         this.errors.pop();
         this.errors.push("Update Failed");
       }
     });
+    
 
   }
 
@@ -32,6 +33,7 @@ export class ProfileSetupComponent extends NbRegisterComponent {
   }
 
   submit(){
+    this._auth.updateProfileSetupStatus(false);
     this.submitted = true;
     this._auth.setupProfile(this.user.email, this.user.password, this.user.fullName, this.user.newPassword, this.user.mobile);
   }

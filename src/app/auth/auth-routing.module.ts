@@ -17,6 +17,11 @@ const routes: Routes = [
         path: 'profile-setup',
         component: ProfileSetupComponent,
       },
+      {
+        path: 'forgot-password',
+        loadChildren: () => import('./forgot-password/forgot-password.module')
+          .then(m => m.ForgotPasswordModule),
+      },
     ],
   },
 ];
