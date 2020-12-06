@@ -32,10 +32,12 @@ export class ProfileSetupComponent extends NbRegisterComponent {
   ngOnInit(): void {
   }
 
-  submit(){
+  async submit(){
     this._auth.updateProfileSetupStatus(false);
     this.submitted = true;
-    this._auth.setupProfile(this.user.email, this.user.password, this.user.fullName, this.user.newPassword, this.user.mobile);
+    const cognitoUser = await this._auth.setupProfile(this.user.email, this.user.password, this.user.fullName, this.user.newPassword, this.user.mobile);
+    console.log(cognitoUser);
+    console.log("Confirmed");
   }
 
 }

@@ -2,7 +2,9 @@ import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { NbAuthService, NbLoginComponent, NB_AUTH_OPTIONS } from '@nebular/auth';
 import { AuthService } from 'app/service/auth.service';
+import { UserService } from 'app/service/user.service';
 import { Auth, Hub } from 'aws-amplify';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-login',
@@ -11,7 +13,7 @@ import { Auth, Hub } from 'aws-amplify';
 })
 export class LoginComponent extends NbLoginComponent {
 
-  constructor(service: NbAuthService,@Inject(NB_AUTH_OPTIONS) options:{}, cd: ChangeDetectorRef, router: Router, private _auth: AuthService){
+  constructor(service: NbAuthService,@Inject(NB_AUTH_OPTIONS) options:{}, cd: ChangeDetectorRef, router: Router, private _auth: AuthService, private _userService: UserService){
     super(service, options, cd, router);
     this.showMessages.success = false;
     this.showMessages.error = false;
@@ -38,6 +40,7 @@ export class LoginComponent extends NbLoginComponent {
         this._auth.setSignedInStatus(true);
         this.submitted = false;
         this.router.navigate(['main/dashboard']);
+        this._userService.saveUser(data);
       }
     },
     error: err => {
