@@ -1,9 +1,28 @@
-<div class="uploadfilecontainer" (click)="fileInput.click()" fxFileUpload (onFileDropped)="uploadFile($event)">
-    <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
-</div>
-<div class="files-list" *ngFor="let file of files;let i= index">
-    <p> {{ file }} </p>
-    <button class="delete-file" (click)="deleteAttachment(i)">
-        <nb-icon icon="trash-2-outline" status="danger"></nb-icon>
-    </button>
-</div>
+<nb-card>
+    <nb-card-header>Add People</nb-card-header>
+    <nb-card-body>
+        <form>
+            <div class="form-group row">
+                <label class="label col-sm-3 col-form-label">Sample File</label>
+                <div class="col-sm-9">
+                    <button nbButton status="info" size="small"><nb-icon icon="download"></nb-icon>Download</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="label col-sm-3 col-form-label">Upload People List</label>
+                <div class="col-sm-9">
+                    <div class="uploadfilecontainer" (click)="fileInput.click()" fxFileUpload (onFileDropped)="uploadFile($event)">
+                        <input hidden type="file" #fileInput (change)="uploadFile($event.target.files)">
+                    </div>
+                    <div class="files-list" *ngFor="let file of files;let i= index">
+                        <p> {{ file }} </p>
+                        <button class="delete-file" (click)="deleteAttachment(i)">
+                            <nb-icon icon="trash-2-outline" status="danger"></nb-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" nbButton fullWidth status="primary">Submit</button>
+        </form>
+    </nb-card-body>
+</nb-card>
