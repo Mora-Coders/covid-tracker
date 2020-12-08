@@ -1,0 +1,969 @@
+# this is an auto generated file. This will be overwritten
+query SyncOrganizations(
+  $filter: ModelOrganizationFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncOrganizations(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetOrganization($id: ID!) {
+  getOrganization(id: $id) {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListOrganizations(
+  $filter: ModelOrganizationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listOrganizations(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      organizationId
+      name
+      email
+      mobile
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      organizationId
+      name
+      email
+      mobile
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncPeople(
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncPeople(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetPerson($id: ID!) {
+  getPerson(id: $id) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListPersons(
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPersons(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncTemperatures(
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTemperatures(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetTemperature($id: ID!) {
+  getTemperature(id: $id) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+query ListTemperatures(
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTemperatures(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query UsersByOrganization(
+  $organizationId: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  usersByOrganization(
+    organizationId: $organizationId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      organizationId
+      name
+      email
+      mobile
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query PersonsByOrganization(
+  $organizationId: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  personsByOrganization(
+    organizationId: $organizationId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query PersonsByDepartmentByName(
+  $department: String
+  $name: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  personsByDepartmentByName(
+    department: $department
+    name: $name
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query PersonsByLocationByName(
+  $zipCode: Int
+  $name: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  personsByLocationByName(
+    zipCode: $zipCode
+    name: $name
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query PersonsByName(
+  $name: String
+  $sortDirection: ModelSortDirection
+  $filter: ModelPersonFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  personsByName(
+    name: $name
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query TemperaturesByPerson(
+  $personId: ID
+  $sortDirection: ModelSortDirection
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  temperaturesByPerson(
+    personId: $personId
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query TemperaturesByDateByValue(
+  $date: String
+  $value: ModelFloatKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  temperaturesByDateByValue(
+    date: $date
+    value: $value
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query TemperaturesByDepartmentByDateByValue(
+  $department: String
+  $dateValue: ModelTemperatureByDepartmentByDateByValueCompositeKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  temperaturesByDepartmentByDateByValue(
+    department: $department
+    dateValue: $dateValue
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}
+query TemperaturesByLocationByDateByValue(
+  $zipCode: Int
+  $dateValue: ModelTemperatureByLocationByDateByValueCompositeKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelTemperatureFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  temperaturesByLocationByDateByValue(
+    zipCode: $zipCode
+    dateValue: $dateValue
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      personId
+      value
+      zipCode
+      department
+      date
+      person {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    nextToken
+    startedAt
+  }
+}

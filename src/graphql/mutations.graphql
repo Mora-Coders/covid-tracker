@@ -1,0 +1,607 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateOrganization(
+  $input: CreateOrganizationInput!
+  $condition: ModelOrganizationConditionInput
+) {
+  createOrganization(input: $input, condition: $condition) {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateOrganization(
+  $input: UpdateOrganizationInput!
+  $condition: ModelOrganizationConditionInput
+) {
+  updateOrganization(input: $input, condition: $condition) {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteOrganization(
+  $input: DeleteOrganizationInput!
+  $condition: ModelOrganizationConditionInput
+) {
+  deleteOrganization(input: $input, condition: $condition) {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation CreatePerson(
+  $input: CreatePersonInput!
+  $condition: ModelPersonConditionInput
+) {
+  createPerson(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdatePerson(
+  $input: UpdatePersonInput!
+  $condition: ModelPersonConditionInput
+) {
+  updatePerson(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeletePerson(
+  $input: DeletePersonInput!
+  $condition: ModelPersonConditionInput
+) {
+  deletePerson(input: $input, condition: $condition) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation CreateTemperature(
+  $input: CreateTemperatureInput!
+  $condition: ModelTemperatureConditionInput
+) {
+  createTemperature(input: $input, condition: $condition) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation UpdateTemperature(
+  $input: UpdateTemperatureInput!
+  $condition: ModelTemperatureConditionInput
+) {
+  updateTemperature(input: $input, condition: $condition) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+mutation DeleteTemperature(
+  $input: DeleteTemperatureInput!
+  $condition: ModelTemperatureConditionInput
+) {
+  deleteTemperature(input: $input, condition: $condition) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}

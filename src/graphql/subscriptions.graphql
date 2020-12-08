@@ -1,0 +1,571 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateOrganization {
+  onCreateOrganization {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateOrganization {
+  onUpdateOrganization {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteOrganization {
+  onDeleteOrganization {
+    id
+    name
+    users {
+      items {
+        id
+        organizationId
+        name
+        email
+        mobile
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    persons {
+      items {
+        id
+        organizationId
+        name
+        nic
+        mobile
+        type
+        department
+        country
+        zipCode
+        address
+        latitude
+        longitude
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateUser($owner: String!) {
+  onCreateUser(owner: $owner) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnUpdateUser($owner: String!) {
+  onUpdateUser(owner: $owner) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnDeleteUser($owner: String!) {
+  onDeleteUser(owner: $owner) {
+    id
+    organizationId
+    name
+    email
+    mobile
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnCreatePerson($owner: String) {
+  onCreatePerson(owner: $owner) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnUpdatePerson($owner: String) {
+  onUpdatePerson(owner: $owner) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnDeletePerson($owner: String) {
+  onDeletePerson(owner: $owner) {
+    id
+    organizationId
+    name
+    nic
+    mobile
+    type
+    department
+    country
+    zipCode
+    address
+    latitude
+    longitude
+    organization {
+      id
+      name
+      users {
+        nextToken
+        startedAt
+      }
+      persons {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    temperatureValues {
+      items {
+        id
+        personId
+        value
+        zipCode
+        department
+        date
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnCreateTemperature($owner: String) {
+  onCreateTemperature(owner: $owner) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnUpdateTemperature($owner: String) {
+  onUpdateTemperature(owner: $owner) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}
+subscription OnDeleteTemperature($owner: String) {
+  onDeleteTemperature(owner: $owner) {
+    id
+    personId
+    value
+    zipCode
+    department
+    date
+    person {
+      id
+      organizationId
+      name
+      nic
+      mobile
+      type
+      department
+      country
+      zipCode
+      address
+      latitude
+      longitude
+      organization {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      temperatureValues {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+    owner
+  }
+}

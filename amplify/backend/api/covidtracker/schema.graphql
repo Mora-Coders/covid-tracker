@@ -1,0 +1,64 @@
+type Organization 
+  @model
+  @auth(rules: [{ allow: groups, groups: ["ADMINS"] }])
+{
+  id: ID!
+  name: String!
+  users: [User] @connection(keyName: "byOrganization", fields: ["id"])
+  persons: [Person] @connection(keyName: "byOrganization", fields: ["id"])
+}
+
+type User
+  @model
+  @auth(rules: [{ allow: owner }])
+  @key(name: "byOrganization", fields: ["organizationId"], queryField: "usersByOrganization")
+  @key(name: "byEmail", fields: ["email"], queryField: "usersByEmail")
+{
+  id: ID!
+  organizationId: ID!
+  name: String
+  email: AWSEmail!
+  mobile: AWSPhone
+  organization: Organization @connection(fields: ["organizationId"])
+}
+
+type Person
+  @model
+  @auth(rules: [{ allow: owner }, { allow: groups, groups: ["ADMINS"] }])
+  @key(name: "byOrganization", fields: ["organizationId"], queryField: "personsByOrganization")
+  @key(name: "byDepartmentByName", fields: ["department", "name"], queryField: "personsByDepartmentByName")
+  @key(name: "byLocationByName", fields: ["zipCode", "name"], queryField: "personsByLocationByName")
+  @key(name: "byName", fields:["name"], queryField: "personsByName")
+{
+  id: ID!
+  organizationId: ID!
+  name: String
+  nic: String!
+  mobile: String
+  type: String
+  department: String
+  country: String
+  zipCode: Int
+  address: String
+  latitude: Float
+  longitude: Float
+  organization: Organization @connection(fields: ["organizationId"])
+  temperatureValues: [Temperature] @connection(keyName: "byPerson", fields: ["id"])
+}
+
+type Temperature
+  @model
+  @auth(rules: [{ allow: owner }, { allow: groups, groups: ["ADMINS"] }])
+  @key(name: "byPerson", fields: ["personId"], queryField: "temperaturesByPerson")
+  @key(name: "byDateByValue", fields: ["date", "value"], queryField: "temperaturesByDateByValue")
+  @key(name: "byDepartmentByDateByValue", fields: ["department", "date", "value"], queryField: "temperaturesByDepartmentByDateByValue")
+  @key(name: "byLocationByDateByValue", fields: ["zipCode", "date", "value"], queryField: "temperaturesByLocationByDateByValue")
+{
+  id: ID!
+  personId: ID!
+  value: Float
+  zipCode: Int
+  department: String
+  date: String!
+  person: Person @connection(fields: ["personId"])
+}

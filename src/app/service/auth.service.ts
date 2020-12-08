@@ -1,10 +1,11 @@
 import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Auth, Hub } from 'aws-amplify';
+import { API, Auth, Hub } from 'aws-amplify';
 import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { fromPromise } from 'rxjs/internal-compatibility';
 import { catchError, map } from 'rxjs/operators';
+import * as mutations from '../../graphql/mutations';
 
 export interface AuthState {
   isLoggedIn: boolean;
@@ -63,41 +64,44 @@ export class AuthService {
    } 
   
   /** Setup profile in the first login */
-  async setupProfile(username: string, password: string, name: string, newPassword: string, mobile: string): Promise<any> {
-    return Auth.signIn(username, password)
-      .then(user => {
-          if (user.challengeName === 'NEW_PASSWORD_REQUIRED') {
-              const { requiredAttributes } = user.challengeParam;
-              console.log(username);
-              console.log(password);
-              console.log(name);
-              console.log(newPassword);
-              console.log(mobile);
-              Auth.completeNewPassword(
-                  user,
-                  newPassword,
-                  {
-                    name: name,
-                    email: username,
-                    phone_number: mobile
-                  }
-              ).then(user => {
-                  console.log(user);
-                  this.setUser(user);
-                  this._signedIn.next(true);
-                  this._signFailed.next(false);
-                  this.router.navigate(['main/dashboard']);
-              }).catch(e => {
-                this._profileSetupFailed.next(true);
-                console.log(e);
-              });
-          } else {
-              this._profileSetupFailed.next(true);
-          }
-      }).catch(e => {
-          console.log(e);
-          this._profileSetupFailed.next(true);
-      });
+  setupProfile(username: string, password: string, name: string, newPassword: string, mobile: string){
+    Auth.signIn(username, password)
+      .then(data => {
+        if (data.challengeName === 'NEW_PASSWORD_REQUIRED'){
+          return Auth.completeNewPassword(
+            data,
+            newPassword,
+            {
+              name: name,
+              email: username,
+              phone_number: mobile
+            }
+          );
+        }else{
+          throw Error("FAILD");
+        }
+      })
+      .then(data =>{
+        this.setUser(data);
+        const userDetails = {
+          organizationId: 'd0107c06-0615-494d-877d-e517a7c6f15a',
+          name: name,
+          email: username,
+          mobile: mobile
+        };
+        const user = API.graphql({ query: mutations.createUser, variables: {input: userDetails}});
+        console.log(user);
+      })
+      .then(data => {
+        console.log(data);
+        this._signedIn.next(true);
+        this._signFailed.next(false);
+        this.router.navigate(['main/dashboard']);
+      })
+      .catch(err => {
+        this._profileSetupFailed.next(true);
+        console.log(err);
+      })
   }
 
   /** Sign in function */
