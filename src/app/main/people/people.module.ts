@@ -7,7 +7,8 @@ import { AddPeopleComponent } from './add-people/add-people.component';
 import { ViewPeopleComponent } from './view-people/view-people.component';
 import { DirectiveModule } from 'app/directive/directive.module';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
-import { NbIconModule } from '@nebular/theme';
+import { NbActionsModule, NbButtonModule, NbCardModule, NbCheckboxModule, NbIconModule, NbInputModule, NbRadioModule } from '@nebular/theme';
+import { ThemeModule } from 'app/@theme/theme.module';
 
 
 @NgModule({
@@ -17,7 +18,14 @@ import { NbIconModule } from '@nebular/theme';
     PeopleRoutingModule,
     DirectiveModule,
     NbIconModule,
-    NbEvaIconsModule
+    NbEvaIconsModule,
+    NbCardModule,
+    NbButtonModule,
+    NbActionsModule,
+    NbCheckboxModule,
+    NbRadioModule,
+    NbInputModule,
+    ThemeModule
   ]
 })
 export class PeopleModule { }
