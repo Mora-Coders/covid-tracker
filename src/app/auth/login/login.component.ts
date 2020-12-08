@@ -3,8 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 import { NbAuthService, NbLoginComponent, NB_AUTH_OPTIONS } from '@nebular/auth';
 import { AuthService } from 'app/service/auth.service';
 import { UserService } from 'app/service/user.service';
-import { Auth, Hub } from 'aws-amplify';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-login',
@@ -24,8 +22,6 @@ export class LoginComponent extends NbLoginComponent {
 
   login(){
     this.submitted = true;
-    console.log(this.user.email);
-    //this._auth.signIn(this.user.email, this.user.password);
     this._auth.signIn(this.user.email, this.user.password)
       .subscribe(this.observer);
   }
